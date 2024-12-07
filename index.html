@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube-like Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 10px 20px;
+      background: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+    }
+
+    .home-btn {
+      background-color: #f4f4f4;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 15px;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .home-btn:hover {
+      background-color: #ddd;
+    }
+
+    .navbar-categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .navbar-categories button {
+      background: #f4f4f4;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 15px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .navbar-categories button.active {
+      background: black;
+      color: white;
+    }
+
+    .navbar-categories button:hover {
+      background: #ddd;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .search-img {
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    .search-img:hover {
+      filter: brightness(1.2);
+    }
+
+    .search-input {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      outline: none;
+      width: 200px;
+    }
+
+    .notification-img {
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    .notification-img:hover {
+      filter: brightness(1.2);
+    }
+
+    .profile-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ddd;
+      object-fit: cover;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .profile-img:hover {
+      border-color: black;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+
+    .categories button {
+      background: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 5px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+    .categories button.active {
+      background: rgb(241, 150, 150);
+      color: white;
+    }
+
+    .categories button:hover {
+      background:rgb(203, 91, 91);;
+    }
+ 
+    .categories button:focus {
+      outline: 2px solid rgb(241, 150, 150);
+    }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 20px;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .video-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .video-card h3 {
+      margin: 10px;
+      font-size: 23px;
+    }
+
+    .video-card p {
+      margin: 10px;
+      color: #666;
+      font-size: 19px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <header class="navbar">
+        <div class="navbar-left">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnEXQdAa-3ljX26kSoD1zDIGZnVP6Wyy4wJg&s" alt="YouTube Logo" class="logo">
+          <button class="home-btn">
+            <span></span> Home
+          </button>
+        </div>
+    <nav class="categories">
+      <button>All</button>
+      <button>Music</button>
+      <button>Food</button>
+      <button>Coding</button>
+      <button>Live</button>
+      <button>Gaming</button>
+    </nav>
+    <div class="navbar-right">
+        <input type="text" placeholder="Search" class="search-input">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiFfrzzlN28mYorli3874QB7Fvfhw5JLHjGQ&s" alt="Search" class="search-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvWYRkZ0aCW7OO_Pl33GPGSzjM6AWQsY9w-Q&s" alt="Notifications" class="notification-img">
+        <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiE6cl_vxRbwrRjLx4lKqeFuNBx0vIvpQaFw&s"alt="Profile" class="profile-img">
+    </div>
+    </header>
+  </header>
+
+  <div class="video-grid">
+    <div class="video-card">
+      <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRRcCjn7WDibDapX8pqlCU08yr_qGJnLzOdg&s" alt="Video Thumbnail">
+      <h3>How to start a coding Youtube channel??(with tips)</h3>
+      <p>763K views • 7 hours ago</p>
+    </div>
+    <div class="video-card">
+      <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhVSp-FwN-CTaP5_89ahfPQRXZ9LQ_reILHA&s" alt="Video Thumbnail">
+      <h3>Learn High-Level System Design by Coding Youtube-Full Course</h3>
+      <p>1.6M views • 1 year ago</p>
+    </div>
+    <div class="video-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLbcreFFaDO7td0dmkZK5L18ak6iqDm6r_uw&s" alt="Video Thumbnail">
+      <h3>BEST PLATFORMS TO LEARN CODING</h3>
+      <p>79K views • 2 days ago</p>
+    </div>
+    <div class="video-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8gKVClWtlYoFuDG3cnPRQ_5445vcLeo7bwg&s" alt="Video Thumbnail">
+      <h3>Live streaming-demo</h3>
+      <p>500K views • 1 week ago</p>
+    </div>
+    <div class="video-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYP6c6qdC9eo7QBrq3_3CVsYt9xTFhn577pQ&s" alt="Video Thumbnail">
+      <h3>How to Design Youtube Thumbnails - Part 2</h3>
+      <p>900K views • 3 days ago</p>
+    </div>
+    <div class="video-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Gd0CaZXA4NkRQdP_04Ya_KZ1K_AU8jVVzl89xqkKDsMov-HIfbhOlLflRGC3xzFOLjQ&usqp=CAU" alt="Video Thumbnail">
+      <h3>Graphic designing channel - must watch</h3>
+      <p>1.2M views • 2 months ago</p>
+    </div>
+  </div>
+
+  <script>
+      const categoryButtons = document.querySelectorAll('.categories button');
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+      });
+      categoryButtons.forEach(button => {
+  button.addEventListener('dblclick', event => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    alert(`You double-clicked on ${button.textContent}`);
+  });
+
+   categoryButtons.forEach(button => {
+      button.addEventListener('contextmenu', (e) => {
+        e.preventDefault(); 
+        console.log(`Right-clicked on ${button.textContent}`);
+      });
+    });
+    });
+    });
+  </script>
+</body>
+</html>
